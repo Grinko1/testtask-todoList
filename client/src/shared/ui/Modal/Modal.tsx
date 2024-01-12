@@ -22,7 +22,6 @@ export const Modal = (props: ModalProps) => {
     isOpen,
     animationDelay: ANIMATION_DELAY,
   });
-  console.log(isOpen);
 
   const mods: Mods = {
     [cls.opened]: isOpen,

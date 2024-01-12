@@ -1,7 +1,7 @@
 export type Status = "completed" | "inprogress" | "new";
 
 export interface Todo {
-  id: number;
+  _id: string;
   title: string;
   text: string;
   status: Status;

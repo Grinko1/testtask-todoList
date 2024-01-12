@@ -1,34 +1,54 @@
 .Todo {
-border:1px solid grey;
-padding: 10px;
-border-radius: 5px;
-width: 100%;
-.header{
+  border: 1px solid grey;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
-    .info{
-        display: flex;
-        
-        p{
-            text-align: center;
-            font-weight: 700;
-            font-size: 20px;
-            margin-left: 20px;
-        }
+
+    .info {
+      display: flex;
+
+      p {
+        text-align: center;
+        font-weight: 700;
+        font-size: 20px;
+        margin-left: 20px;
+      }
     }
-   
-    .actions{
-        display: flex;
-     
-        .edit{
-            color: green;
-            rotate: 90deg;
-        }
-        .delete{
-            color: red;
-        }
+
+    .actions {
+      display: flex;
+
+      .moveToWork::after {
+        content: attr(data-title);
+        opacity: 0;
+        width: 100px;
+        position: absolute;
+        background: blue;
+        border-radius: 5px;
+        color: #fff;
+        top: -10px;
+        font-size: 10px;
+      }
+      .moveToWork:hover::after {
+        content: attr(data-title);
+        opacity: 1;
+      }
+      .moveToWork {
+        font-size: 18px;
+        color: blue;
+        position: relative;
+      }
+      .edit {
+        color: green;
+        rotate: 90deg;
+      }
+      .delete {
+        color: red;
+      }
     }
-}
+  }
 }

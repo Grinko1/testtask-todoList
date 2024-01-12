@@ -4,8 +4,10 @@ import { memo, useCallback, useState } from 'react';
 import { Todo } from 'entities/todo/model/types/todo';
 import { Button } from 'shared/ui/Button/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { todosActions } from 'features/todos/model/slices/todosSlice';
 import { FormTodo, TodoInfo } from 'features/todos/ui/FormTodo/FormTodo';
+import { deleteTodo, toggleCompleted } from 'features/todos';
+import { takeToWork } from 'features/todos/model/services/takeToWork';
+import { editTodo } from 'features/todos/model/services/editTodo';
 
 interface TodoProps {
   className?: string;
@@ -17,28 +19,45 @@ export const TodoItem = memo((props: TodoProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
   const handleDelete = () => {
-    dispatch(todosActions.deleteTodo(todo));
+    dispatch(deleteTodo(todo._id))
   };
-  const handleToggleStatus = () => {
-    dispatch(todosActions.changeStatus(todo));
-  };
+
+  const handleToggleCompleted = () => {
+    dispatch(toggleCompleted(todo._id))
+  }
   const onClose = useCallback(() => {
     setIsOpen(false);
   }, []);
-  const handleEditTodo = useCallback((todo: TodoInfo) => {
-    // dispatch(todosActions.addTodo(task));
-    console.log("edited todo", todo)
-  }, []);
+  const handleEditTodo = useCallback(
+    (todo: TodoInfo) => {
+      dispatch(editTodo(todo as Todo));
+    },
+    [todo],
+  );
+  const handleTakeToWork =() => {
+    dispatch(takeToWork(todo._id))
+  }
   return (
     <>
       <div className={classNames(cls.Todo, {}, [className])}>
         <div className={cls.header}>
           <div className={cls.info}>
-            <input type='checkbox' checked={todo.completed} onChange={handleToggleStatus} />
+            <input type='checkbox' checked={todo.completed} onChange={handleToggleCompleted} />
             <p> {todo.title}</p>
           </div>
 
           <div className={cls.actions}>
+            {todo.status !== 'inprogress' && (
+              <>
+                <span className={cls.tip} data-title='Взять в работу'></span>
+                <Button
+                  onClick={handleTakeToWork}
+                  data-title='Взять в работу'
+                  className={cls.moveToWork}>
+                  &#43;
+                </Button>
+              </>
+            )}
             <Button className={cls.edit} onClick={() => setIsOpen(true)}>
               &#9998;
             </Button>

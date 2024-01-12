@@ -18,7 +18,7 @@ export const Header = memo((props: HeaderProps) => {
   return (
     <div className={classNames(cls.Header, {}, [className])}>
       <h2>ToDo List</h2>
-      <Button onClick={() => setIsOpen(true)}>Add new todo</Button>
+      <Button onClick={() => setIsOpen(true)}>Добавить задачу</Button>
       <AddTodo isOpen={isOpen} onClose={onClose} todo={task} />
     </div>
   );

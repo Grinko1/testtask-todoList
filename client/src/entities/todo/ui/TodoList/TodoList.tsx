@@ -12,12 +12,11 @@ interface TodoListProps {
 
 export const TodoList = memo((props: TodoListProps) => {
   const { className, todos, title } = props;
-  console.log(todos);
   return (
     <div className={classNames(cls.TodoList, {}, [className])}>
       <h2>{title}</h2>
       {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
+        <TodoItem key={todo._id} todo={todo} />
       ))}
     </div>
   );

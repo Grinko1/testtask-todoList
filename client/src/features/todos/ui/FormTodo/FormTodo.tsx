@@ -3,12 +3,13 @@ import cls from './FormTodo.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { Form } from './Form/Form';
+import { Todo } from 'entities/todo/model/types/todo';
 
 interface FormTodoProps {
   className?: string;
   isOpen: boolean;
   onClose: () => void;
-  todo: TodoInfo;
+  todo: TodoInfo | Todo;
   doneAction: (todo: TodoInfo) => void;
   headerForForm?: string;
   titleForBtn?: string;
@@ -21,8 +22,7 @@ export interface TodoInfo {
 
 export const FormTodo = memo((props: FormTodoProps) => {
   const { className, onClose, isOpen, todo, headerForForm, titleForBtn, doneAction } = props;
-  const [task, setTask] = useState(todo ? todo : { title: '', text: '', status: 'new' });
-
+  const [task, setTask] = useState(todo);
   const changeStatus = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     setTask((prev) => ({ ...prev, status: e.target.value }));
   }, []);
