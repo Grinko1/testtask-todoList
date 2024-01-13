@@ -1,8 +1,7 @@
 {
     "functions": {
         "api/*": {
-            "runtime": "node@14",
-            "memory": 512
+            "runtime": "vercel/node"
         }
     },
     "routes": [
