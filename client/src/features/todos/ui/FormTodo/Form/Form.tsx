@@ -7,6 +7,7 @@ interface FormProps {
   className?: string;
   onClose: () => void;
   header?: string;
+  error:string;
   todo: TodoInfo;
   titleForBtn?: string;
   changeText: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -21,6 +22,7 @@ export const Form = memo((props: FormProps) => {
     onClose,
     header,
     todo,
+    error,
     titleForBtn,
     changeText,
     changeTitle,
@@ -34,6 +36,7 @@ export const Form = memo((props: FormProps) => {
       <form className={cls.form}>
         <input
           type='text'
+          maxLength={80}
           placeholder='Введите название'
           value={todo.title}
           onChange={(e) => changeTitle(e)}
@@ -50,6 +53,7 @@ export const Form = memo((props: FormProps) => {
             <option value='completed'>Завершенная</option>
           </select>
         </div>
+        {!!error.length && <span className={cls.error}>{error}</span>}
         <button onClick={(e) => completeHandler(e)}>{titleForBtn}</button>
       </form>
     </div>

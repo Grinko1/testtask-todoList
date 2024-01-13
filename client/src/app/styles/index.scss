@@ -1,7 +1,4 @@
 @import 'reset';
-@import 'themes/dark';
-@import 'themes/normal';
-@import 'themes/orange';
 @import 'variables/global';
 
 body {
@@ -12,13 +9,13 @@ body {
 .app {
   font: var(--font-m);
   background: var(--bg-color);
-
   color: var(--primary-color);
-  //  background: #000;
-  // color: #fff;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: auto;
   display: flex;
   flex-direction: column;
+  max-width: 1400px;
+  margin: auto;
 }
 
 .content-page {

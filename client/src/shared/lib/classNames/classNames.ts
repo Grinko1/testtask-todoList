@@ -10,6 +10,4 @@ export function classNames (cls: string, mods: Mods = {}, additional: Array<stri
   ].join(' ');
 }
 
-// classNames('remove-btn', {hovered:true, selectable:true, red:false}, ['gap8, padding3'])
-// return
-// "remove-btn hovered selectable gap8 padding3"
+

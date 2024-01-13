@@ -25,11 +25,7 @@
     "./config/jest/jestEmptyComponent.ts",
     "./src/**/*.ts",
     "./src/**/*.tsx",
-    "webpack.config.ts",
-    "./config/storybook/webpack.config.ts",
-    "./config/storybook/preview.tsx",
-    "./config/storybook/main.ts",
-    "./config/jest/jest.config.ts"
+    "webpack.config.ts"
   ],
   "exclude": ["./src/**/*.js", "./src/**/*.jsx"]
 }

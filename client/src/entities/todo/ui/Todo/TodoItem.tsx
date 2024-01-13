@@ -67,7 +67,7 @@ export const TodoItem = memo((props: TodoProps) => {
           </div>
         </div>
 
-        <p>{todo.text}</p>
+        <p className={cls.text}>{todo.text}</p>
       </div>
       <FormTodo
         isOpen={isOpen}

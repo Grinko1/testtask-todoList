@@ -23,6 +23,7 @@ export interface TodoInfo {
 export const FormTodo = memo((props: FormTodoProps) => {
   const { className, onClose, isOpen, todo, headerForForm, titleForBtn, doneAction } = props;
   const [task, setTask] = useState(todo);
+  const [error, setError] = useState('');
   const changeStatus = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     setTask((prev) => ({ ...prev, status: e.target.value }));
   }, []);
@@ -36,10 +37,17 @@ export const FormTodo = memo((props: FormTodoProps) => {
   const editTask = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault();
+      if (task.text.length === 0 || task.title.length === 0) {
+        setError('Все поля должны быть заполнены');
+        setTimeout(() => {
+          setError('');
+        }, 3000);
+      }
       if (task.text !== '' && task.title !== '') {
         doneAction(task);
         onClose();
         setTask({ title: '', text: '', status: 'new' });
+        setError('');
       }
     },
     [task],
@@ -51,6 +59,7 @@ export const FormTodo = memo((props: FormTodoProps) => {
         header={headerForForm}
         todo={task}
         titleForBtn={titleForBtn}
+        error={error}
         changeText={changeText}
         changeTitle={changeTitle}
         changeStatus={changeStatus}
