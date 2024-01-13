@@ -1,9 +1,17 @@
 {
-    "version":2,
-    "builds":[
-        {"src": "*.js", "use":"@vercel/node"}
+    "functions": {
+        "api/*": {
+            "runtime": "node@14",
+            "memory": 512
+        }
+    },
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/$1"
+        }
     ],
-    "routes":[
-        {"src":"/(.*)", "dest": "/"}
-    ]
+    "env": {
+        "MONGODB_URI": "mongodb+srv://nadenka64013730:hJZpy6KP4PIYAvYA@cluster0.2570fuf.mongodb.net/?retryWrites=true&w=majority"
+    }
 }
