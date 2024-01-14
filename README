@@ -1,0 +1,29 @@
+# Your React App
+
+Welcome to my TodoList React app!
+
+## Setup
+
+1. Clone the repository https://github.com/Grinko1/testtask-todoList.git
+2. Change directory to Server:`cd server`.
+3. Install dependencies: `npm install`.
+4. Run the app: `npm run server`.
+5. Open new terminal window and change directory on Client `cd client`.
+6. Install dependencies: `npm install`.
+7. Run the app: `npm run start`.
+8. To build app you can use : `npm run build:dev`or `npm run build:prod`.
+
+## Technology Stack
+
+**Frontend**
+-React.js
+-TypeScript
+-Redux toolkit
+-Webpack
+-Babel
+
+**Backend**
+-Express.js
+-Mongo db
+
+
